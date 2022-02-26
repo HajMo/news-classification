@@ -1,5 +1,8 @@
 <?php
 
+use RoachPHP\Roach;
+use App\Models\Post;
+use App\Spiders\SunaSpider;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    Roach::startSpider(SunaSpider::class);
+
+    dd(Post::all());
 });
